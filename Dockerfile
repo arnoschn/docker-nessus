@@ -2,7 +2,7 @@ FROM centos:7
 MAINTAINER Mike Nowak
 
 ENV NESSUS_VERSION="6.11.1"
-
+VOLUME ["/opt/nessus"]
 RUN set -x \
   # Update the base image
   && yum update -y \
@@ -25,6 +25,6 @@ RUN set -x \
   && yum clean all \
   && rm -rf /var/cache/yum
 
-VOLUME ["/opt/nessus"]
+
 EXPOSE 8834
 CMD ["/opt/nessus/sbin/nessus-service"]
